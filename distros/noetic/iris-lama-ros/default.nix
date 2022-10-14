@@ -2,19 +2,20 @@
 # Copyright 2022 Open Source Robotics Foundation
 # Distributed under the terms of the BSD license
 
-{ lib, buildRosPackage, fetchurl, catkin, geometry-msgs, iris-lama, message-filters, nav-msgs, rosbag, rosbag-storage, roscpp, std-srvs, tf, tf-conversions, visualization-msgs }:
+{ lib, buildRosPackage, fetchurl, catkin, geometry-msgs, iris-lama, libyamlcpp, message-filters, nav-msgs, rosbag, rosbag-storage, roscpp, std-srvs, tf, tf-conversions, tf2-geometry-msgs, visualization-msgs }:
 buildRosPackage {
   pname = "ros-noetic-iris-lama-ros";
-  version = "1.2.0-r1";
+  version = "1.3.3-r1";
 
   src = fetchurl {
-    url = "https://github.com/eupedrosa/iris_lama_ros-release/archive/release/noetic/iris_lama_ros/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "d53c2064d66d9ed37d41db740666304d55caed042ea225f5a4baf57cb935ec95";
+    url = "https://github.com/eupedrosa/iris_lama_ros-release/archive/release/noetic/iris_lama_ros/1.3.3-1.tar.gz";
+    name = "1.3.3-1.tar.gz";
+    sha256 = "e99e79b003e294db1eaf51b0eb338e760f3138c031eab1dc1ab480afded49ea2";
   };
 
   buildType = "catkin";
-  propagatedBuildInputs = [ geometry-msgs iris-lama message-filters nav-msgs rosbag rosbag-storage roscpp std-srvs tf tf-conversions visualization-msgs ];
+  buildInputs = [ catkin ];
+  propagatedBuildInputs = [ geometry-msgs iris-lama libyamlcpp message-filters nav-msgs rosbag rosbag-storage roscpp std-srvs tf tf-conversions tf2-geometry-msgs visualization-msgs ];
   nativeBuildInputs = [ catkin ];
 
   meta = {

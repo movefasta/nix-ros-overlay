@@ -1,20 +1,21 @@
 { lib, stdenv, fetchFromGitHub, cmake, ignition, ignition-cmake ? ignition.cmake
 , ignition-math ? ignition.math, ignition-msgs ? ignition.msgs
 , ignition-utils ? ignition.utils, protobuf, libuuid, sqlite, cppzmq, zeromq
-, majorVersion ? "10"
-, version ? "10.0.0"
-, srcSha256 ? "0jhqn1hai25mg1807ixhp903jg8gqwl8kqrm4na50q8gl6jnv7hi"
+, majorVersion ? "11"
+, version ? "11.1.0"
+, srcHash ? "sha256-bOsulr8O5sRJ3XAQOP9xWCgoXqEH6M+IEFa0Sx6vze0="
 , ... }:
 
 stdenv.mkDerivation rec {
   pname = "ignition-transport${majorVersion}";
   inherit version;
 
-  src = fetchFromGitHub {
+  src = fetchFromGitHub rec {
+    name = "${rev}-source";
     owner = "ignitionrobotics";
     repo = "ign-transport";
     rev = "${pname}_${version}";
-    sha256 = srcSha256;
+    hash = srcHash;
   };
 
   nativeBuildInputs = [ cmake ];
@@ -22,11 +23,6 @@ stdenv.mkDerivation rec {
   buildInputs = [ ignition-math sqlite ]
     ++ lib.optional (lib.versionAtLeast version "5") ignition-utils;
   propagatedBuildInputs = [ protobuf cppzmq zeromq libuuid ignition-msgs ];
-
-  cmakeFlags= [
-    "-DCMAKE_INSTALL_INCLUDEDIR:PATH=include"
-    "-DCMAKE_INSTALL_LIBDIR:PATH=lib"
-  ];
 
   meta = with lib; {
     homepage = "https://ignitionrobotics.org/libs/transport";

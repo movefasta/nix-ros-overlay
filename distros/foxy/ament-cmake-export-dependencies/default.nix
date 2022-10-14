@@ -5,17 +5,17 @@
 { lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-libraries }:
 buildRosPackage {
   pname = "ros-foxy-ament-cmake-export-dependencies";
-  version = "0.9.9-r1";
+  version = "0.9.11-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/foxy/ament_cmake_export_dependencies/0.9.9-1.tar.gz";
-    name = "0.9.9-1.tar.gz";
-    sha256 = "4b360d1e67fe4bf1a9bae38a43e71e85649c2ab15e579aa1ca87a474bcac5c20";
+    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/foxy/ament_cmake_export_dependencies/0.9.11-1.tar.gz";
+    name = "0.9.11-1.tar.gz";
+    sha256 = "ef301d14628c07235f3f415d2386d4f4d214d027080f2943cab4bacd3a525652";
   };
 
   buildType = "ament_cmake";
   propagatedBuildInputs = [ ament-cmake-core ament-cmake-libraries ];
-  nativeBuildInputs = [ ament-cmake-core ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-libraries ];
 
   meta = {
     description = ''The ability to export dependencies to downstream packages in the ament buildsystem in CMake.'';

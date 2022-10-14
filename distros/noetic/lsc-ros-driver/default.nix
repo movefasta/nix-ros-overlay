@@ -5,16 +5,16 @@
 { lib, buildRosPackage, fetchurl, catkin, diagnostic-updater, roscpp, self-test, sensor-msgs, std-msgs }:
 buildRosPackage {
   pname = "ros-noetic-lsc-ros-driver";
-  version = "1.0.1-r1";
+  version = "1.0.2-r2";
 
   src = fetchurl {
-    url = "https://github.com/AutonicsLiDAR-release/lsc_ros_driver-release/archive/release/noetic/lsc_ros_driver/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "27f3f20c333d932eeeb3113e5e1e8fffe71bc6eb4afd607075a49711c6774076";
+    url = "https://github.com/AutonicsLiDAR-release/lsc_ros_driver-release/archive/release/noetic/lsc_ros_driver/1.0.2-2.tar.gz";
+    name = "1.0.2-2.tar.gz";
+    sha256 = "42c98d9245a7adf469b21dba3a12a2be6a8d91567cb37ece7f285d394f1e78c9";
   };
 
   buildType = "catkin";
-  buildInputs = [ diagnostic-updater self-test ];
+  buildInputs = [ catkin diagnostic-updater self-test ];
   propagatedBuildInputs = [ roscpp sensor-msgs std-msgs ];
   nativeBuildInputs = [ catkin ];
 

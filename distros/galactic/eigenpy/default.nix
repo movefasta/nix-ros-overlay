@@ -5,16 +5,16 @@
 { lib, buildRosPackage, fetchurl, boost, cmake, doxygen, eigen, git, python3, python3Packages }:
 buildRosPackage {
   pname = "ros-galactic-eigenpy";
-  version = "2.7.7-r1";
+  version = "2.7.14-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/eigenpy-release/archive/release/galactic/eigenpy/2.7.7-1.tar.gz";
-    name = "2.7.7-1.tar.gz";
-    sha256 = "9357d8db0a07420fe4e0fd471f2fafb46dcae3ca26b3e84e41bb6c5dc9072098";
+    url = "https://github.com/ros2-gbp/eigenpy-release/archive/release/galactic/eigenpy/2.7.14-1.tar.gz";
+    name = "2.7.14-1.tar.gz";
+    sha256 = "7de1185adac6f18d98d2d9bad11abc68dbb9c70515ed831762d6c477e259a231";
   };
 
   buildType = "cmake";
-  buildInputs = [ doxygen git ];
+  buildInputs = [ cmake doxygen git ];
   propagatedBuildInputs = [ boost eigen python3 python3Packages.numpy ];
   nativeBuildInputs = [ cmake ];
 

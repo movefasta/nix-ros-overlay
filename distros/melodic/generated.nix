@@ -602,6 +602,8 @@ self: super: {
 
  costmap-cspace-msgs = self.callPackage ./costmap-cspace-msgs {};
 
+ costmap-cspace-rviz-plugins = self.callPackage ./costmap-cspace-rviz-plugins {};
+
  costmap-queue = self.callPackage ./costmap-queue {};
 
  costmap-tf-layer = self.callPackage ./costmap-tf-layer {};
@@ -947,6 +949,8 @@ self: super: {
  end-effector = self.callPackage ./end-effector {};
 
  er-public-msgs = self.callPackage ./er-public-msgs {};
+
+ ess-imu-ros1-uart-driver = self.callPackage ./ess-imu-ros1-uart-driver {};
 
  ethercat-grant = self.callPackage ./ethercat-grant {};
 
@@ -2002,6 +2006,8 @@ self: super: {
 
  lpg-planner = self.callPackage ./lpg-planner {};
 
+ lsc-ros-driver = self.callPackage ./lsc-ros-driver {};
+
  lusb = self.callPackage ./lusb {};
 
  magical-ros2-conversion-tool = self.callPackage ./magical-ros2-conversion-tool {};
@@ -2031,6 +2037,8 @@ self: super: {
  marti-data-structures = self.callPackage ./marti-data-structures {};
 
  marti-dbw-msgs = self.callPackage ./marti-dbw-msgs {};
+
+ marti-introspection-msgs = self.callPackage ./marti-introspection-msgs {};
 
  marti-nav-msgs = self.callPackage ./marti-nav-msgs {};
 
@@ -2169,6 +2177,8 @@ self: super: {
  mobile-robot-simulator = self.callPackage ./mobile-robot-simulator {};
 
  mobileye-560-660-msgs = self.callPackage ./mobileye-560-660-msgs {};
+
+ mocap-nokov = self.callPackage ./mocap-nokov {};
 
  mocap-optitrack = self.callPackage ./mocap-optitrack {};
 
@@ -3946,8 +3956,6 @@ self: super: {
 
  smach-ros = self.callPackage ./smach-ros {};
 
- smach-viewer = self.callPackage ./smach-viewer {};
-
  smclib = self.callPackage ./smclib {};
 
  snowbot-operating-system = self.callPackage ./snowbot-operating-system {};
@@ -4009,6 +4017,8 @@ self: super: {
  stereo-msgs = self.callPackage ./stereo-msgs {};
 
  switchbot-ros = self.callPackage ./switchbot-ros {};
+
+ swri-cli-tools = self.callPackage ./swri-cli-tools {};
 
  swri-console = self.callPackage ./swri-console {};
 

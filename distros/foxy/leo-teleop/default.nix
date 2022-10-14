@@ -5,15 +5,16 @@
 { lib, buildRosPackage, fetchurl, ament-cmake, joy, teleop-twist-joy, teleop-twist-keyboard }:
 buildRosPackage {
   pname = "ros-foxy-leo-teleop";
-  version = "1.0.3-r1";
+  version = "1.1.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_common-ros2-release/archive/release/foxy/leo_teleop/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "5ada41d927756de6ef0d07f57a2afbfe7b8a0246861c1404383878b0339dfdd3";
+    url = "https://github.com/ros2-gbp/leo_common-release/archive/release/foxy/leo_teleop/1.1.0-1.tar.gz";
+    name = "1.1.0-1.tar.gz";
+    sha256 = "0e6f486ff13ac9fe45396394fa905a4fbf15c87a6779b09ecfa50a30185ed352";
   };
 
   buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ];
   propagatedBuildInputs = [ joy teleop-twist-joy teleop-twist-keyboard ];
   nativeBuildInputs = [ ament-cmake ];
 

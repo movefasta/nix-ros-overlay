@@ -1,27 +1,23 @@
 { lib, stdenv, fetchFromGitHub, cmake, ignition, ignition-cmake ? ignition.cmake
 , majorVersion ? "6"
-, version ? "6.7.0"
-, srcSha256 ? "0hyhlqgjx3yrmk1fgp1brgq2lk8l26sihn8yfmm0garbxi70zspb"
+, version ? "6.12.0"
+, srcHash ? "sha256-tKVaRzxLzMfAyL6+xRmmTgFKxFXAjoNyf8pgwOkWb/Q="
 , ... }:
 
 stdenv.mkDerivation rec {
   pname = "ignition-math${majorVersion}";
   inherit version;
 
-  src = fetchFromGitHub {
+  src = fetchFromGitHub rec {
+    name = "${rev}-source";
     owner = "ignitionrobotics";
     repo = "ign-math";
     rev = "${pname}_${version}";
-    sha256 = srcSha256;
+    hash = srcHash;
   };
 
   nativeBuildInputs = [ cmake ];
   propagatedNativeBuildInputs = [ ignition-cmake ];
-
-  cmakeFlags = [
-    "-DCMAKE_INSTALL_INCLUDEDIR:PATH=include"
-    "-DCMAKE_INSTALL_LIBDIR:PATH=lib"
-  ];
 
   meta = with lib; {
     homepage = "https://ignitionrobotics.org/libs/math";

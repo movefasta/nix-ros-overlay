@@ -5,15 +5,16 @@
 { lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-python }:
 buildRosPackage {
   pname = "ros-foxy-ament-cmake-test";
-  version = "0.9.9-r1";
+  version = "0.9.11-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/foxy/ament_cmake_test/0.9.9-1.tar.gz";
-    name = "0.9.9-1.tar.gz";
-    sha256 = "fe907d5b83d1d5214c498ea4f1c81cc535a793ba626fe4fc960b833f466d9d48";
+    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/foxy/ament_cmake_test/0.9.11-1.tar.gz";
+    name = "0.9.11-1.tar.gz";
+    sha256 = "c1be7c5f4514bc126ada7c44d9be62e0694de6975d8c711fb30c323c1e3da7d6";
   };
 
   buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-python ];
   propagatedBuildInputs = [ ament-cmake-core ];
   nativeBuildInputs = [ ament-cmake-core ament-cmake-python ];
 

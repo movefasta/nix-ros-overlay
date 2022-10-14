@@ -5,15 +5,16 @@
 { lib, buildRosPackage, fetchurl, catkin, controller-interface, controller-manager, franka-description, franka-gripper, franka-hw, franka-msgs, geometry-msgs, joint-state-publisher, joint-trajectory-controller, libfranka, pluginlib, realtime-tools, robot-state-publisher, roscpp, sensor-msgs, std-srvs, tf, tf2-msgs }:
 buildRosPackage {
   pname = "ros-noetic-franka-control";
-  version = "0.9.0-r1";
+  version = "0.10.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/frankaemika/franka_ros-release/archive/release/noetic/franka_control/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "46917738d8d13685d8e0bdecd910e881900227d2e05af23f5dd5eb645d6c4c9d";
+    url = "https://github.com/frankaemika/franka_ros-release/archive/release/noetic/franka_control/0.10.1-1.tar.gz";
+    name = "0.10.1-1.tar.gz";
+    sha256 = "4954c523191d8507e67f2957ac8e77b51bba3ed3ebea34bc78afe864befcd3d0";
   };
 
   buildType = "catkin";
+  buildInputs = [ catkin ];
   propagatedBuildInputs = [ controller-interface controller-manager franka-description franka-gripper franka-hw franka-msgs geometry-msgs joint-state-publisher joint-trajectory-controller libfranka pluginlib realtime-tools robot-state-publisher roscpp sensor-msgs std-srvs tf tf2-msgs ];
   nativeBuildInputs = [ catkin ];
 

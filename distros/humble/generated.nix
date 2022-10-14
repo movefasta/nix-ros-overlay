@@ -406,6 +406,10 @@ self: super: {
 
  gc-spl-2022 = self.callPackage ./gc-spl-2022 {};
 
+ generate-parameter-library = self.callPackage ./generate-parameter-library {};
+
+ generate-parameter-library-example = self.callPackage ./generate-parameter-library-example {};
+
  geodesy = self.callPackage ./geodesy {};
 
  geographic-info = self.callPackage ./geographic-info {};
@@ -440,6 +444,36 @@ self: super: {
 
  grbl-ros = self.callPackage ./grbl-ros {};
 
+ grid-map = self.callPackage ./grid-map {};
+
+ grid-map-cmake-helpers = self.callPackage ./grid-map-cmake-helpers {};
+
+ grid-map-core = self.callPackage ./grid-map-core {};
+
+ grid-map-costmap-2d = self.callPackage ./grid-map-costmap-2d {};
+
+ grid-map-cv = self.callPackage ./grid-map-cv {};
+
+ grid-map-demos = self.callPackage ./grid-map-demos {};
+
+ grid-map-filters = self.callPackage ./grid-map-filters {};
+
+ grid-map-loader = self.callPackage ./grid-map-loader {};
+
+ grid-map-msgs = self.callPackage ./grid-map-msgs {};
+
+ grid-map-octomap = self.callPackage ./grid-map-octomap {};
+
+ grid-map-pcl = self.callPackage ./grid-map-pcl {};
+
+ grid-map-ros = self.callPackage ./grid-map-ros {};
+
+ grid-map-rviz-plugin = self.callPackage ./grid-map-rviz-plugin {};
+
+ grid-map-sdf = self.callPackage ./grid-map-sdf {};
+
+ grid-map-visualization = self.callPackage ./grid-map-visualization {};
+
  gripper-controllers = self.callPackage ./gripper-controllers {};
 
  gscam = self.callPackage ./gscam {};
@@ -451,6 +485,8 @@ self: super: {
  hash-library-vendor = self.callPackage ./hash-library-vendor {};
 
  hls-lfcd-lds-driver = self.callPackage ./hls-lfcd-lds-driver {};
+
+ hpp-fcl = self.callPackage ./hpp-fcl {};
 
  iceoryx-binding-c = self.callPackage ./iceoryx-binding-c {};
 
@@ -497,6 +533,8 @@ self: super: {
  intra-process-demo = self.callPackage ./intra-process-demo {};
 
  io-context = self.callPackage ./io-context {};
+
+ irobot-create-msgs = self.callPackage ./irobot-create-msgs {};
 
  joint-limits = self.callPackage ./joint-limits {};
 
@@ -570,11 +608,17 @@ self: super: {
 
  leo = self.callPackage ./leo {};
 
+ leo-bringup = self.callPackage ./leo-bringup {};
+
  leo-description = self.callPackage ./leo-description {};
 
  leo-desktop = self.callPackage ./leo-desktop {};
 
+ leo-fw = self.callPackage ./leo-fw {};
+
  leo-msgs = self.callPackage ./leo-msgs {};
+
+ leo-robot = self.callPackage ./leo-robot {};
 
  leo-teleop = self.callPackage ./leo-teleop {};
 
@@ -593,6 +637,8 @@ self: super: {
  libphidget22 = self.callPackage ./libphidget22 {};
 
  libpointmatcher = self.callPackage ./libpointmatcher {};
+
+ librealsense2 = self.callPackage ./librealsense2 {};
 
  libstatistics-collector = self.callPackage ./libstatistics-collector {};
 
@@ -732,7 +778,17 @@ self: super: {
 
  moveit-servo = self.callPackage ./moveit-servo {};
 
+ moveit-setup-app-plugins = self.callPackage ./moveit-setup-app-plugins {};
+
  moveit-setup-assistant = self.callPackage ./moveit-setup-assistant {};
+
+ moveit-setup-controllers = self.callPackage ./moveit-setup-controllers {};
+
+ moveit-setup-core-plugins = self.callPackage ./moveit-setup-core-plugins {};
+
+ moveit-setup-framework = self.callPackage ./moveit-setup-framework {};
+
+ moveit-setup-srdf-plugins = self.callPackage ./moveit-setup-srdf-plugins {};
 
  moveit-simple-controller-manager = self.callPackage ./moveit-simple-controller-manager {};
 
@@ -759,6 +815,8 @@ self: super: {
  nav2-bringup = self.callPackage ./nav2-bringup {};
 
  nav2-bt-navigator = self.callPackage ./nav2-bt-navigator {};
+
+ nav2-collision-monitor = self.callPackage ./nav2-collision-monitor {};
 
  nav2-common = self.callPackage ./nav2-common {};
 
@@ -799,6 +857,8 @@ self: super: {
  nav2-theta-star-planner = self.callPackage ./nav2-theta-star-planner {};
 
  nav2-util = self.callPackage ./nav2-util {};
+
+ nav2-velocity-smoother = self.callPackage ./nav2-velocity-smoother {};
 
  nav2-voxel-grid = self.callPackage ./nav2-voxel-grid {};
 
@@ -864,6 +924,12 @@ self: super: {
 
  ouxt-lint-common = self.callPackage ./ouxt-lint-common {};
 
+ pal-statistics = self.callPackage ./pal-statistics {};
+
+ pal-statistics-msgs = self.callPackage ./pal-statistics-msgs {};
+
+ parameter-traits = self.callPackage ./parameter-traits {};
+
  pcl-conversions = self.callPackage ./pcl-conversions {};
 
  pcl-msgs = self.callPackage ./pcl-msgs {};
@@ -915,6 +981,8 @@ self: super: {
  pilz-industrial-motion-planner = self.callPackage ./pilz-industrial-motion-planner {};
 
  pilz-industrial-motion-planner-testutils = self.callPackage ./pilz-industrial-motion-planner-testutils {};
+
+ pinocchio = self.callPackage ./pinocchio {};
 
  plansys2-bringup = self.callPackage ./plansys2-bringup {};
 
@@ -1051,6 +1119,10 @@ self: super: {
  rclcpp-lifecycle = self.callPackage ./rclcpp-lifecycle {};
 
  rclpy = self.callPackage ./rclpy {};
+
+ rclpy-message-converter = self.callPackage ./rclpy-message-converter {};
+
+ rclpy-message-converter-msgs = self.callPackage ./rclpy-message-converter-msgs {};
 
  rcpputils = self.callPackage ./rcpputils {};
 
@@ -1198,13 +1270,23 @@ self: super: {
 
  ros2acceleration = self.callPackage ./ros2acceleration {};
 
+ ros2action = self.callPackage ./ros2action {};
+
  ros2bag = self.callPackage ./ros2bag {};
+
+ ros2cli = self.callPackage ./ros2cli {};
 
  ros2cli-common-extensions = self.callPackage ./ros2cli-common-extensions {};
 
  ros2cli-test-interfaces = self.callPackage ./ros2cli-test-interfaces {};
 
+ ros2component = self.callPackage ./ros2component {};
+
  ros2controlcli = self.callPackage ./ros2controlcli {};
+
+ ros2doctor = self.callPackage ./ros2doctor {};
+
+ ros2interface = self.callPackage ./ros2interface {};
 
  ros2launch = self.callPackage ./ros2launch {};
 
@@ -1212,11 +1294,27 @@ self: super: {
 
  ros2launch-security-examples = self.callPackage ./ros2launch-security-examples {};
 
+ ros2lifecycle = self.callPackage ./ros2lifecycle {};
+
  ros2lifecycle-test-fixtures = self.callPackage ./ros2lifecycle-test-fixtures {};
+
+ ros2multicast = self.callPackage ./ros2multicast {};
+
+ ros2node = self.callPackage ./ros2node {};
 
  ros2nodl = self.callPackage ./ros2nodl {};
 
+ ros2param = self.callPackage ./ros2param {};
+
+ ros2pkg = self.callPackage ./ros2pkg {};
+
+ ros2run = self.callPackage ./ros2run {};
+
+ ros2service = self.callPackage ./ros2service {};
+
  ros2test = self.callPackage ./ros2test {};
+
+ ros2topic = self.callPackage ./ros2topic {};
 
  ros2trace = self.callPackage ./ros2trace {};
 
@@ -1228,7 +1326,19 @@ self: super: {
 
  ros-environment = self.callPackage ./ros-environment {};
 
+ ros-gz = self.callPackage ./ros-gz {};
+
+ ros-gz-interfaces = self.callPackage ./ros-gz-interfaces {};
+
  ros-ign = self.callPackage ./ros-ign {};
+
+ ros-ign-bridge = self.callPackage ./ros-ign-bridge {};
+
+ ros-ign-gazebo = self.callPackage ./ros-ign-gazebo {};
+
+ ros-ign-gazebo-demos = self.callPackage ./ros-ign-gazebo-demos {};
+
+ ros-ign-image = self.callPackage ./ros-ign-image {};
 
  ros-ign-interfaces = self.callPackage ./ros-ign-interfaces {};
 
@@ -1352,6 +1462,8 @@ self: super: {
 
  rqt-image-view = self.callPackage ./rqt-image-view {};
 
+ rqt-joint-trajectory-controller = self.callPackage ./rqt-joint-trajectory-controller {};
+
  rqt-moveit = self.callPackage ./rqt-moveit {};
 
  rqt-msg = self.callPackage ./rqt-msg {};
@@ -1380,11 +1492,15 @@ self: super: {
 
  rqt-srv = self.callPackage ./rqt-srv {};
 
+ rqt-tf-tree = self.callPackage ./rqt-tf-tree {};
+
  rqt-topic = self.callPackage ./rqt-topic {};
 
  rt-manipulators-cpp = self.callPackage ./rt-manipulators-cpp {};
 
  rt-manipulators-examples = self.callPackage ./rt-manipulators-examples {};
+
+ rtcm-msgs = self.callPackage ./rtcm-msgs {};
 
  rti-connext-dds-cmake-module = self.callPackage ./rti-connext-dds-cmake-module {};
 
@@ -1435,6 +1551,8 @@ self: super: {
  sick-safetyscanners2-interfaces = self.callPackage ./sick-safetyscanners2-interfaces {};
 
  sick-safetyscanners-base = self.callPackage ./sick-safetyscanners-base {};
+
+ simple-actions = self.callPackage ./simple-actions {};
 
  simple-launch = self.callPackage ./simple-launch {};
 
@@ -1528,6 +1646,8 @@ self: super: {
 
  tango-icons-vendor = self.callPackage ./tango-icons-vendor {};
 
+ tcb-span = self.callPackage ./tcb-span {};
+
  teleop-tools = self.callPackage ./teleop-tools {};
 
  teleop-tools-msgs = self.callPackage ./teleop-tools-msgs {};
@@ -1539,8 +1659,6 @@ self: super: {
  tensorrt-cmake-module = self.callPackage ./tensorrt-cmake-module {};
 
  test-apex-test-tools = self.callPackage ./test-apex-test-tools {};
-
- test-bond = self.callPackage ./test-bond {};
 
  test-interface-files = self.callPackage ./test-interface-files {};
 
@@ -1604,6 +1722,8 @@ self: super: {
 
  transmission-interface = self.callPackage ./transmission-interface {};
 
+ tricycle-controller = self.callPackage ./tricycle-controller {};
+
  turtle-tf2-cpp = self.callPackage ./turtle-tf2-cpp {};
 
  turtle-tf2-py = self.callPackage ./turtle-tf2-py {};
@@ -1637,6 +1757,8 @@ self: super: {
  tvm-vendor = self.callPackage ./tvm-vendor {};
 
  twist-mux = self.callPackage ./twist-mux {};
+
+ twist-stamper = self.callPackage ./twist-stamper {};
 
  ublox = self.callPackage ./ublox {};
 
@@ -1729,6 +1851,8 @@ self: super: {
  visp = self.callPackage ./visp {};
 
  visualization-msgs = self.callPackage ./visualization-msgs {};
+
+ vrpn = self.callPackage ./vrpn {};
 
  warehouse-ros = self.callPackage ./warehouse-ros {};
 

@@ -5,15 +5,16 @@
 { lib, buildRosPackage, fetchurl, ament-cmake, leo-description, leo-msgs, leo-teleop }:
 buildRosPackage {
   pname = "ros-foxy-leo";
-  version = "1.0.3-r1";
+  version = "1.1.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_common-ros2-release/archive/release/foxy/leo/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "00b01002e0b0e01b78fde719446482fbbedca0879b8be77eb67171fc4dabfb40";
+    url = "https://github.com/ros2-gbp/leo_common-release/archive/release/foxy/leo/1.1.0-1.tar.gz";
+    name = "1.1.0-1.tar.gz";
+    sha256 = "20b2fdc32188a50de206d308dc75ba2e7b4b352c36ae2c140b82f05dbfaf0617";
   };
 
   buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ];
   propagatedBuildInputs = [ leo-description leo-msgs leo-teleop ];
   nativeBuildInputs = [ ament-cmake ];
 

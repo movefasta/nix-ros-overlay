@@ -4,6 +4,8 @@
 
 self: super: {
 
+ abb-driver = self.callPackage ./abb-driver {};
+
  abb-egm-msgs = self.callPackage ./abb-egm-msgs {};
 
  abb-rapid-msgs = self.callPackage ./abb-rapid-msgs {};
@@ -57,6 +59,8 @@ self: super: {
  aruco-msgs = self.callPackage ./aruco-msgs {};
 
  aruco-opencv = self.callPackage ./aruco-opencv {};
+
+ aruco-opencv-msgs = self.callPackage ./aruco-opencv-msgs {};
 
  aruco-ros = self.callPackage ./aruco-ros {};
 
@@ -481,6 +485,8 @@ self: super: {
  costmap-cspace = self.callPackage ./costmap-cspace {};
 
  costmap-cspace-msgs = self.callPackage ./costmap-cspace-msgs {};
+
+ costmap-cspace-rviz-plugins = self.callPackage ./costmap-cspace-rviz-plugins {};
 
  costmap-queue = self.callPackage ./costmap-queue {};
 
@@ -1238,6 +1244,8 @@ self: super: {
 
  ifm3d-core = self.callPackage ./ifm3d-core {};
 
+ ign-ros-control-demos = self.callPackage ./ign-ros-control-demos {};
+
  image-cb-detector = self.callPackage ./image-cb-detector {};
 
  image-common = self.callPackage ./image-common {};
@@ -1510,6 +1518,8 @@ self: super: {
 
  lanelet2-validation = self.callPackage ./lanelet2-validation {};
 
+ laptop-battery-monitor = self.callPackage ./laptop-battery-monitor {};
+
  laser-assembler = self.callPackage ./laser-assembler {};
 
  laser-cb-detector = self.callPackage ./laser-cb-detector {};
@@ -1604,11 +1614,15 @@ self: super: {
 
  librviz-tutorial = self.callPackage ./librviz-tutorial {};
 
+ libsensors-monitor = self.callPackage ./libsensors-monitor {};
+
  libsiftfast = self.callPackage ./libsiftfast {};
 
  libuvc-camera = self.callPackage ./libuvc-camera {};
 
  libuvc-ros = self.callPackage ./libuvc-ros {};
+
+ linux-peripheral-interfaces = self.callPackage ./linux-peripheral-interfaces {};
 
  lms1xx = self.callPackage ./lms1xx {};
 
@@ -1655,6 +1669,8 @@ self: super: {
  marti-data-structures = self.callPackage ./marti-data-structures {};
 
  marti-dbw-msgs = self.callPackage ./marti-dbw-msgs {};
+
+ marti-introspection-msgs = self.callPackage ./marti-introspection-msgs {};
 
  marti-nav-msgs = self.callPackage ./marti-nav-msgs {};
 
@@ -1954,6 +1970,16 @@ self: super: {
 
  multisense-ros = self.callPackage ./multisense-ros {};
 
+ nao-meshes = self.callPackage ./nao-meshes {};
+
+ naoqi-bridge-msgs = self.callPackage ./naoqi-bridge-msgs {};
+
+ naoqi-driver = self.callPackage ./naoqi-driver {};
+
+ naoqi-libqi = self.callPackage ./naoqi-libqi {};
+
+ naoqi-libqicore = self.callPackage ./naoqi-libqicore {};
+
  nav2d = self.callPackage ./nav2d {};
 
  nav2d-exploration = self.callPackage ./nav2d-exploration {};
@@ -2149,6 +2175,8 @@ self: super: {
  people-msgs = self.callPackage ./people-msgs {};
 
  people-velocity-tracker = self.callPackage ./people-velocity-tracker {};
+
+ pepper-meshes = self.callPackage ./pepper-meshes {};
 
  perception = self.callPackage ./perception {};
 
@@ -2684,6 +2712,8 @@ self: super: {
 
  ros-realtime = self.callPackage ./ros-realtime {};
 
+ ros-system-fingerprint = self.callPackage ./ros-system-fingerprint {};
+
  ros-tutorials = self.callPackage ./ros-tutorials {};
 
  ros-type-introspection = self.callPackage ./ros-type-introspection {};
@@ -3100,8 +3130,6 @@ self: super: {
 
  smach-ros = self.callPackage ./smach-ros {};
 
- smach-viewer = self.callPackage ./smach-viewer {};
-
  smclib = self.callPackage ./smclib {};
 
  snowbot-operating-system = self.callPackage ./snowbot-operating-system {};
@@ -3159,6 +3187,8 @@ self: super: {
  stereo-image-proc = self.callPackage ./stereo-image-proc {};
 
  stereo-msgs = self.callPackage ./stereo-msgs {};
+
+ swri-cli-tools = self.callPackage ./swri-cli-tools {};
 
  swri-console = self.callPackage ./swri-console {};
 
@@ -3286,7 +3316,7 @@ self: super: {
 
  timestamp-tools = self.callPackage ./timestamp-tools {};
 
- tof-sensor-controller = self.callPackage ./tof-sensor-controller {};
+ tof-radar-controller = self.callPackage ./tof-radar-controller {};
 
  topic-tools = self.callPackage ./topic-tools {};
 

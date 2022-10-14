@@ -608,6 +608,8 @@ self: super: {
 
  hls-lfcd-lds-driver = self.callPackage ./hls-lfcd-lds-driver {};
 
+ hpp-fcl = self.callPackage ./hpp-fcl {};
+
  husky-base = self.callPackage ./husky-base {};
 
  husky-bringup = self.callPackage ./husky-bringup {};
@@ -940,6 +942,14 @@ self: super: {
 
  multires-image = self.callPackage ./multires-image {};
 
+ naoqi-bridge-msgs = self.callPackage ./naoqi-bridge-msgs {};
+
+ naoqi-driver = self.callPackage ./naoqi-driver {};
+
+ naoqi-libqi = self.callPackage ./naoqi-libqi {};
+
+ naoqi-libqicore = self.callPackage ./naoqi-libqicore {};
+
  nav2-amcl = self.callPackage ./nav2-amcl {};
 
  nav2-behavior-tree = self.callPackage ./nav2-behavior-tree {};
@@ -1068,6 +1078,8 @@ self: super: {
 
  pendulum-msgs = self.callPackage ./pendulum-msgs {};
 
+ pepper-meshes = self.callPackage ./pepper-meshes {};
+
  perception-pcl = self.callPackage ./perception-pcl {};
 
  performance-test = self.callPackage ./performance-test {};
@@ -1103,6 +1115,8 @@ self: super: {
  phidgets-temperature = self.callPackage ./phidgets-temperature {};
 
  picknik-ament-copyright = self.callPackage ./picknik-ament-copyright {};
+
+ pinocchio = self.callPackage ./pinocchio {};
 
  plansys2-bringup = self.callPackage ./plansys2-bringup {};
 
@@ -1218,6 +1232,14 @@ self: super: {
 
  raspimouse-msgs = self.callPackage ./raspimouse-msgs {};
 
+ raspimouse-navigation = self.callPackage ./raspimouse-navigation {};
+
+ raspimouse-ros2-examples = self.callPackage ./raspimouse-ros2-examples {};
+
+ raspimouse-slam = self.callPackage ./raspimouse-slam {};
+
+ raspimouse-slam-navigation = self.callPackage ./raspimouse-slam-navigation {};
+
  rc-common-msgs = self.callPackage ./rc-common-msgs {};
 
  rc-dynamics-api = self.callPackage ./rc-dynamics-api {};
@@ -1275,6 +1297,10 @@ self: super: {
  rclcpp-lifecycle = self.callPackage ./rclcpp-lifecycle {};
 
  rclpy = self.callPackage ./rclpy {};
+
+ rclpy-message-converter = self.callPackage ./rclpy-message-converter {};
+
+ rclpy-message-converter-msgs = self.callPackage ./rclpy-message-converter-msgs {};
 
  rcpputils = self.callPackage ./rcpputils {};
 
@@ -1650,6 +1676,8 @@ self: super: {
 
  rtabmap-ros = self.callPackage ./rtabmap-ros {};
 
+ rtcm-msgs = self.callPackage ./rtcm-msgs {};
+
  rttest = self.callPackage ./rttest {};
 
  ruckig = self.callPackage ./ruckig {};
@@ -1705,6 +1733,8 @@ self: super: {
  sick-safetyscanners-base = self.callPackage ./sick-safetyscanners-base {};
 
  sick-scan2 = self.callPackage ./sick-scan2 {};
+
+ simple-actions = self.callPackage ./simple-actions {};
 
  simple-launch = self.callPackage ./simple-launch {};
 
@@ -1783,6 +1813,8 @@ self: super: {
  swri-system-util = self.callPackage ./swri-system-util {};
 
  swri-transform-util = self.callPackage ./swri-transform-util {};
+
+ system-fingerprint = self.callPackage ./system-fingerprint {};
 
  system-metrics-collector = self.callPackage ./system-metrics-collector {};
 
@@ -1979,6 +2011,8 @@ self: super: {
  visualization-msgs = self.callPackage ./visualization-msgs {};
 
  vrpn = self.callPackage ./vrpn {};
+
+ vrpn-mocap = self.callPackage ./vrpn-mocap {};
 
  vrxperience-bridge = self.callPackage ./vrxperience-bridge {};
 

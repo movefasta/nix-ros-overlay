@@ -51,8 +51,14 @@ let
       }) ];
     });
 
-    ament-cmake-core = rosSuper.ament-cmake-core.overrideAttrs ({ ... }: {
-      setupHook = ./ament-cmake-core-setup-hook.sh;
+    ament-cmake-core = rosSuper.ament-cmake-core.overrideAttrs ({
+      propagatedBuildInputs ? [],
+      nativeBuildInputs ? [], ...
+    }: let
+      setupHook = rosSelf.callPackage ./ament-cmake-core-setup-hook { };
+    in {
+      propagatedBuildInputs = [ setupHook ] ++ propagatedBuildInputs;
+      nativeBuildInputs = [ setupHook ] ++ nativeBuildInputs;
     });
 
     camera-calibration-parsers = patchBoostPython rosSuper.camera-calibration-parsers;
@@ -101,7 +107,7 @@ let
     cv-bridge = patchBoostPython rosSuper.cv-bridge;
 
     cyclonedds = rosSuper.cyclonedds.overrideAttrs ({
-      cmakeFlags ? [], preConfigure ? "", ...
+      cmakeFlags ? [], ...
     }: {
       cmakeFlags = cmakeFlags ++ [
         # Tries to download something with maven
@@ -109,12 +115,6 @@ let
         # src/tools/ddsperf/CMakeFiles/ddsperf_types_generate.dir/build.make:74: *** target pattern contains no '%'.  Stop.
         "-DBUILD_DDSPERF=OFF"
       ];
-
-      # Fix running ddsconf from within the build directory (probably an RPATH
-      # issue)
-      preConfigure = preConfigure + ''
-        export LD_LIBRARY_PATH="$(pwd)/build/lib"
-      '';
     });
 
     dynamic-reconfigure = rosSuper.dynamic-reconfigure.overrideAttrs ({
@@ -142,12 +142,12 @@ let
     };
 
     # This is a newer version than the build system tries to download, but this
-    # version doesn't try to download tons of random files during build.
+    # version doesn't try run host platform binaries on the build platform.
     foonathan-memory-vendor = patchVendorGit rosSuper.foonathan-memory-vendor {
       url = "https://github.com/foonathan/memory.git";
       fetchgitArgs = {
-        rev = "293f88d3a7cc49b25ffd4e9f27b1e4a8e14ee0d7";
-        sha256 = "0nr74xv1ajvblvnl070l83zsr69nc1ws7fl2fvfjdq90kvwrz7in";
+        rev = "v0.7-2";
+        sha256 = "sha256-5nJNW0xwjSCc0Egq1zv0tIsGvAh1Xbnu8190A1ZP+VA=";
       };
     };
 
@@ -162,12 +162,8 @@ let
     laser-cb-detector = patchBoostSignals rosSuper.laser-cb-detector;
 
     libfranka = rosSuper.libfranka.overrideAttrs ({
-      patches ? [], cmakeFlags ? [], ...
+      cmakeFlags ? [], ...
     }: {
-      patches = patches ++ [ (self.fetchpatch {
-        url = "https://github.com/frankaemika/libfranka/commit/fbec4214e288d8dd941ddf6c192c9f6f9757d808.patch";
-        sha256 = "00n0xm8chsw16prh02prdn0n6rihpbjwn3jdqmj4l8rwwjdiq8d5";
-      }) ];
       # Uses custom flag to disable tests. Attempts to download GTest without
       # this.
       cmakeFlags = cmakeFlags ++ [ "-DBUILD_TESTS=OFF" ];
@@ -232,7 +228,7 @@ let
       postPatch ? "", ...
     }: {
       postPatch = postPatch + ''
-        substituteInPlace CMakeLists.txt --replace /usr/bin/env '${self.coreutils}/bin/env'
+        substituteInPlace CMakeLists.txt --replace /usr/bin/env '${self.buildPackages.coreutils}/bin/env'
         patchShebangs pymavlink/tools/mavgen.py
       '';
       ROS_PYTHON_VERSION = if rosSelf.python.isPy3k then 3 else 2;
@@ -267,6 +263,15 @@ let
 
     pr2-tilt-laser-interface = patchBoostSignals rosSuper.pr2-tilt-laser-interface;
 
+    python-cmake-module = rosSuper.python-cmake-module.overrideAttrs ({ ... }: let
+      python = rosSelf.python;
+    in {
+      pythonExecutable = python.pythonForBuild.interpreter;
+      pythonLibrary = "${python}/lib/lib${python.libPrefix}.so";
+      pythonIncludeDir = "${python}/include/${python.libPrefix}";
+      setupHook = ./python-cmake-module-setup-hook.sh;
+    });
+
     python-qt-binding = rosSuper.python-qt-binding.overrideAttrs ({
       propagatedNativeBuildInputs ? [],
       postPatch ? "", ...
@@ -289,7 +294,44 @@ let
       '';
     });
 
+    rcutils = rosSuper.rcutils.overrideAttrs ({
+      patches ? [], ...
+    }: {
+      patches = patches ++ [
+        # Fix linking to libatomic
+        # https://github.com/ros2/rcutils/pull/384
+        (self.fetchpatch {
+          url = "https://github.com/ros2/rcutils/commit/05e7336b2160739915be0e2c4a81710806fd2f9c.patch";
+          hash = "sha256-EiO1AJnhvOk81TzFMP4E8NhB+9ymef2oA7l26FZFb1M=";
+        })
+      ];
+    });
+
     roscpp = patchBoostSignals rosSuper.roscpp;
+
+    rosidl-generator-py = rosSuper.rosidl-generator-py.overrideAttrs ({
+      postPatch ? "",
+      patches ? [], ...
+    }: let
+      python = rosSelf.python;
+    in {
+      patches = patches ++ [
+        # Remove stray numpy import in template
+        # https://github.com/ros2/rosidl_python/pull/185
+        (self.fetchpatch {
+          url = "https://github.com/ros2/rosidl_python/commit/bf866089baeb918834d9d16e05668d9f28887b87.patch";
+          hash = "sha256-tOb0t50TbV29+agDupm5XUZJJErfaujgIRtmb2vZxWo=";
+          stripLen = 1;
+        })
+      ];
+      # Fix finding NumPy headers
+      postPatch = postPatch + ''
+        substituteInPlace cmake/rosidl_generator_py_generate_interfaces.cmake \
+         --replace '"import numpy"' "" \
+         --replace 'numpy.get_include()' "'${python.pkgs.numpy}/${python.sitePackages}/numpy/core/include'"
+      '';
+      setupHook = ./rosidl-generator-py-setup-hook.sh;
+    });
 
     rmw-implementation = rosSuper.rmw-implementation.overrideAttrs ({
       propagatedBuildInputs ? [], ...
@@ -476,18 +518,6 @@ let
       CXXFLAGS = CXXFLAGS + " -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H";
     });
 
-    # Fix compatibility with yaml-cpp 0.7.0
-    # https://github.com/swri-robotics/marti_common/pull/648
-    swri-yaml-util = rosSuper.swri-yaml-util.overrideAttrs ({
-      patches ? [], ...
-    }: {
-      patches = patches ++ [ (self.fetchpatch {
-        url = "https://github.com/lopsided98/marti_common/commit/674b2d22e5c4e4950ffcaabaef09cf9ba2111557.patch";
-        stripLen = 1;
-        sha256 = "sha256-HXdDCd9Op/WvYEpzAbVBdhyICobl6KKg9Smt1sewokw=";
-      }) ];
-    });
-
     tf = patchBoostSignals rosSuper.tf;
 
     tf2 = patchBoostSignals rosSuper.tf2;
@@ -514,14 +544,41 @@ let
 
     urdf = patchBoostPython rosSuper.urdf;
 
+    # The build hangs forever while running CMake, causing problems with CI
+    visp = rosSuper.visp.overrideAttrs ({
+      meta ? {}, ...
+    }: {
+      meta = meta // {
+        broken = true;
+      };
+    });
+
     yaml-cpp-vendor = patchVendorUrl rosSuper.yaml-cpp-vendor {
       url = "https://github.com/jbeder/yaml-cpp/archive/0f9a586ca1dc29c2ecb8dd715a315b93e3f40f79.zip";
       sha256 = "1g45f71mk4gyca550177qf70v5cvavlsalmg7x8bi59j6z6f0mgz";
     };
   };
-in self.lib.makeExtensible (rosSelf: self.rosPackages.lib.mergeOverlays [
-  base
-  (import (./. + "/${distro}/generated.nix"))
-  overrides
-  (import (./. + "/${distro}/overrides.nix") self)
-] rosSelf {})
+
+  otherSplices = {
+    selfBuildBuild = self.pkgsBuildBuild.rosPackages.${distro};
+    selfBuildHost = self.pkgsBuildHost.rosPackages.${distro};
+    selfBuildTarget = self.pkgsBuildTarget.rosPackages.${distro};
+    selfHostHost = self.pkgsHostHost.rosPackages.${distro};
+    selfTargetTarget = self.pkgsTargetTarget.rosPackages.${distro} or {};
+  };
+
+  keep = rosSelf: {
+    inherit (rosSelf) lib buildRosPackage;
+  };
+in self.lib.makeScopeWithSplicing
+  self.splicePackages
+  self.newScope
+  otherSplices
+  keep
+  (_: {})
+  (rosSelf: self.lib.composeManyExtensions [
+    base
+    (import (./. + "/${distro}/generated.nix"))
+    overrides
+    (import (./. + "/${distro}/overrides.nix") self)
+  ] rosSelf {})

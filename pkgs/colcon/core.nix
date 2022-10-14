@@ -1,12 +1,17 @@
 { lib, buildPythonApplication, buildPythonPackage, makeWrapper, fetchPypi
-, isPy27, python, distlib, empy, pytest, pytestcov, pytest-repeat
-, pytest-rerunfailures, pytestrunner }:
+, isPy27, python, distlib, empy, pytest, pytest-cov, pytest-repeat
+, pytest-rerunfailures, pytest-runner }:
 
 let
   withExtensions = extensions: buildPythonApplication {
     pname = "colcon";
     inherit (package) version;
-    phases = [ "installPhase" "fixupPhase" ];
+    format = "other";
+
+    dontUnpack = true;
+    dontBuild = true;
+    doCheck = false;
+
     nativeBuildInputs = [ makeWrapper ];
     buildInputs = [ package ] ++ extensions;
 
@@ -33,10 +38,10 @@ let
       distlib
       empy
       pytest
-      pytestcov
+      pytest-cov
       pytest-repeat
       pytest-rerunfailures
-      pytestrunner
+      pytest-runner
     ];
 
     # Requires unpackaged dependencies

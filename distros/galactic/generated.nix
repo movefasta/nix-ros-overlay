@@ -500,6 +500,8 @@ self: super: {
 
  hls-lfcd-lds-driver = self.callPackage ./hls-lfcd-lds-driver {};
 
+ hpp-fcl = self.callPackage ./hpp-fcl {};
+
  iceoryx-binding-c = self.callPackage ./iceoryx-binding-c {};
 
  iceoryx-posh = self.callPackage ./iceoryx-posh {};
@@ -810,6 +812,14 @@ self: super: {
 
  nao-sensor-msgs = self.callPackage ./nao-sensor-msgs {};
 
+ naoqi-bridge-msgs = self.callPackage ./naoqi-bridge-msgs {};
+
+ naoqi-driver = self.callPackage ./naoqi-driver {};
+
+ naoqi-libqi = self.callPackage ./naoqi-libqi {};
+
+ naoqi-libqicore = self.callPackage ./naoqi-libqicore {};
+
  nav2-amcl = self.callPackage ./nav2-amcl {};
 
  nav2-behavior-tree = self.callPackage ./nav2-behavior-tree {};
@@ -942,6 +952,8 @@ self: super: {
 
  pendulum-msgs = self.callPackage ./pendulum-msgs {};
 
+ pepper-meshes = self.callPackage ./pepper-meshes {};
+
  perception-pcl = self.callPackage ./perception-pcl {};
 
  performance-test = self.callPackage ./performance-test {};
@@ -981,6 +993,8 @@ self: super: {
  pilz-industrial-motion-planner = self.callPackage ./pilz-industrial-motion-planner {};
 
  pilz-industrial-motion-planner-testutils = self.callPackage ./pilz-industrial-motion-planner-testutils {};
+
+ pinocchio = self.callPackage ./pinocchio {};
 
  plansys2-bringup = self.callPackage ./plansys2-bringup {};
 
@@ -1117,6 +1131,10 @@ self: super: {
  rclcpp-lifecycle = self.callPackage ./rclcpp-lifecycle {};
 
  rclpy = self.callPackage ./rclpy {};
+
+ rclpy-message-converter = self.callPackage ./rclpy-message-converter {};
+
+ rclpy-message-converter-msgs = self.callPackage ./rclpy-message-converter-msgs {};
 
  rcpputils = self.callPackage ./rcpputils {};
 
@@ -1480,6 +1498,8 @@ self: super: {
 
  rtabmap-ros = self.callPackage ./rtabmap-ros {};
 
+ rtcm-msgs = self.callPackage ./rtcm-msgs {};
+
  rti-connext-dds-cmake-module = self.callPackage ./rti-connext-dds-cmake-module {};
 
  rttest = self.callPackage ./rttest {};
@@ -1533,6 +1553,8 @@ self: super: {
  sick-safetyscanners2-interfaces = self.callPackage ./sick-safetyscanners2-interfaces {};
 
  sick-safetyscanners-base = self.callPackage ./sick-safetyscanners-base {};
+
+ simple-actions = self.callPackage ./simple-actions {};
 
  simple-launch = self.callPackage ./simple-launch {};
 
