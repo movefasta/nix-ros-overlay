@@ -417,6 +417,16 @@ let
       '';
     });
 
+    rviz2 = rosSuper.rviz2.overrideAttrs ({
+      nativeBuildInputs ? [], postFixup ? "", ...
+    }: {
+      dontWrapQtApps = false;
+      nativeBuildInputs = nativeBuildInputs ++ [ self.qt5.wrapQtAppsHook ];
+      postFixup = postFixup + ''
+        wrapQtApp "$out/lib/rviz2/rviz2"
+      '';
+    });
+
     rviz-ogre-vendor = rosSuper.rviz-ogre-vendor.overrideAttrs ({
       preFixup ? "", ...
     }: {
